@@ -41,8 +41,8 @@ fun ProgramSenderScreen(modifier: Modifier) {
         onClick = {
             val intent = Intent(context, ProgramReceiverActivity::class.java).apply {
                 putExtra("PROGRAM_NAME", "MS")
-                putExtra("PROGRAM_DURATION", "2 years")
-                putExtra("PROGRAM_IS_ONLINE", false)
+                putExtra("PROGRAM_DURATION", 2)
+                putExtra("PROGRAM_IS_ONLINE", true)
             }
             context.startActivity(intent)
         },

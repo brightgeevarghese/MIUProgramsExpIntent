@@ -38,11 +38,11 @@ class ProgramReceiverActivity : ComponentActivity() {
 @Composable
 fun ProgramReceiverScreen(modifier: Modifier) {
     val context = LocalContext.current
-    var intent = if (context is ProgramReceiverActivity) context.intent else null
+    var intent = (context as ComponentActivity).intent
     // Retrieve program data from the intent
-    val programName = intent?.getStringExtra("PROGRAM_NAME") ?: "Unknown Program"
-    val programDuration = intent?.getIntExtra("PROGRAM_DURATION", -1)  // Default value if not found
-    val isOnline = intent?.getBooleanExtra("PROGRAM_IS_ONLINE", false)  // Default value if not found
+    val programName = intent.getStringExtra("PROGRAM_NAME") ?: "Unknown Program"
+    val programDuration = intent.getIntExtra("PROGRAM_DURATION", -1)  // Default value if not found
+    val isOnline = intent.getBooleanExtra("PROGRAM_IS_ONLINE", false)  // Default value if not found
 
     Column(modifier = modifier.padding(16.dp)) {
         Text(text = "Program: $programName")
@@ -51,7 +51,7 @@ fun ProgramReceiverScreen(modifier: Modifier) {
         Spacer(modifier = Modifier.height(8.dp))
         Text(text = "Online Program: $isOnline")
         Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = { if (context is ProgramReceiverActivity) context.finish() }) {
+        Button(onClick = { context.finish() }) {
             Text(text = "Back to Sender")
         }
     }
