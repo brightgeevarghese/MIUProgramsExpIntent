@@ -39,12 +39,19 @@ fun ProgramSenderScreen(modifier: Modifier) {
     val context = LocalContext.current
     Button(
         onClick = {
-            val intent = Intent(context, ProgramReceiverActivity::class.java).apply {
+//            val intent = Intent(context, ProgramReceiverActivity::class.java).apply {
+//                putExtra("PROGRAM_NAME", "MS")
+//                putExtra("PROGRAM_DURATION", 2)
+//                putExtra("PROGRAM_IS_ONLINE", true)
+//            }
+//            context.startActivity(intent)
+            Intent(context, ProgramReceiverActivity::class.java).apply {
                 putExtra("PROGRAM_NAME", "MS")
                 putExtra("PROGRAM_DURATION", 2)
                 putExtra("PROGRAM_IS_ONLINE", true)
+            }.also {
+                context.startActivity(it)
             }
-            context.startActivity(intent)
         },
         modifier = modifier.padding(100.dp)
     ) {
